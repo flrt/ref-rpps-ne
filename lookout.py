@@ -130,7 +130,7 @@ class App:
              - produce RSS feed if configured
         """
 
-        self.logger.debug(f"Start... (zipfile={zipfile}")
+        self.logger.debug(f"Start... (zipfile={zipfile})")
         try:
             _zip = None
             if zipfile:
@@ -143,6 +143,7 @@ class App:
                 # download new file if available
                 _zip = self.rpps_data.retrieve_current()
 
+            self.logger.info(f"Zip data file : {_zip}")
             # compute Zip file
             if self.rpps_data.is_newer(_zip):
                 self.logger.debug(f"Unzip data file : {_zip}")
