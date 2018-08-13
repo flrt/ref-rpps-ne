@@ -1,0 +1,27 @@
+{
+    "URL": "https://service.annuaire.sante.fr/annuaire-sante-webservices/V300/services/extraction/PS_LibreAcces",
+    "local": {
+        "data": {
+            "PS_LibreAcces_Dipl_AutExerc": "files/PS_LibreAcces_Dipl_AutExerc_201808120759.txt",
+            "PS_LibreAcces_Personne_activite": "files/PS_LibreAcces_Personne_activite_201808120759.txt",
+            "PS_LibreAcces_SavoirFaire": "files/PS_LibreAcces_SavoirFaire_201808120759.txt"
+        },
+        "last_check": "201808121033",
+        "last_check_old": "201808090830",
+        "rss_updates_filename": "rss_ps_act.json",
+        "save_diff_data": true,
+        "save_diff_index": true,
+        "storage": "files",
+        "rss_history": 15
+    },
+    "pub": {
+        "feed_base": "http://www.opikanoba.org/feeds/rpps",
+        "url_base": "https://www.opikanoba.org/data/rpps"
+    },
+    "tracks": {
+        "PS_LibreAcces_Personne_activite": {
+            "filename": "rpps_stats.json",
+            "save_history": true
+        }
+    }
+}

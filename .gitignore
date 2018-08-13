@@ -1,0 +1,10 @@
+*.pyc
+__pycache__
+*.zip
+.idea/
+.DS_Store
+.vscode
+myconf/
+files/
+test/files/*
+test/test/*

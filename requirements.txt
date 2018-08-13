@@ -1,0 +1,9 @@
+requests
+lxml
+html5lib
+bs4
+mailer
+xlrd
+arrow
+pandas
+tweepy

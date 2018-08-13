@@ -1,0 +1,7 @@
+{
+  "server": "ftp.blabla.org",
+  "port": 21,
+  "user": "user",
+  "passwd": "pwd",
+  "remotedir": "tmp"
+}

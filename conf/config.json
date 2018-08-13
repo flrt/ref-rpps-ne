@@ -1,0 +1,97 @@
+{
+    "URL": "https://service.annuaire.sante.fr/annuaire-sante-webservices/V300/services/extraction/PS_LibreAcces",
+    "local": {
+        "data": {
+            "PS_LibreAcces_Dipl_AutExerc": "files/PS_LibreAcces_Dipl_AutExerc_201808080836.txt",
+            "PS_LibreAcces_Personne_activite": "files/PS_LibreAcces_Personne_activite_201808080836.txt",
+            "PS_LibreAcces_SavoirFaire": "files/PS_LibreAcces_SavoirFaire_201808080836.txt"
+        },
+        "last_check": "201808081110",
+        "rss_updates_filename": "rss_ps_act.json",
+        "save_diff_data": true,
+        "save_diff_index": true,
+        "storage": "files"
+    },
+    "pub": {
+        "feed_base": "http://www.opikanoba.org/feeds/rpps",
+        "url_base": "https://www.opikanoba.org/data/rpps"
+    },
+    "tracks": {
+        "mssante": [
+            {
+                "filename": "mssante_top10.json",
+                "name": "Top 10",
+                "rss": true,
+                "save_history": false,
+                "top": 10
+            },
+            {
+                "domains": {
+                    "title": "Domaines des CHU",
+                    "value": [
+                        "chu-amiens.mssante.fr",
+                        "chu-rennes.mssante.fr",
+                        "chu-besancon.mssante.fr",
+                        "chu-bordeaux.mssante.fr",
+                        "chu-brest.mssante.fr",
+                        "chu-caen.mssante.fr",
+                        "chu-clermontferrand.mssante.fr",
+                        "chu-dijon.mssante.fr",
+                        "chu-grenoble.mssante.fr",
+                        "chu-lille.mssante.fr",
+                        "chu-limoges.mssante.fr",
+                        "chu-lyon.mssante.fr",
+                        "aphm.mssante.fr",
+                        "sante-martinique.mssante.fr",
+                        "hpdir-metz.mssante.fr",
+                        "chu-montpellier.mssante.fr",
+                        "chu-nancy.mssante.fr",
+                        "chu-nantes.mssante.fr",
+                        "chu-nice.mssante.fr",
+                        "chu-nimes.mssante.fr",
+                        "chr-orleans.mssante.fr",
+                        "aphp.mssante.fr",
+                        "guadeloupe.mssante.fr",
+                        "chu-poitiers.mssante.fr",
+                        "chu-reims.mssante.fr",
+                        "chu-rennes.mssante.fr",
+                        "chu-rouen.mssante.fr",
+                        "chu-st-etienne.mssante.fr",
+                        "chru-strasbourg.mssante.fr",
+                        "chu-toulouse.mssante.fr",
+                        "chu-tours.mssante.fr"
+                    ]
+                },
+                "filename": "chu-mssante.json",
+                "name": "chu-mssante",
+                "rss": true,
+                "save_history": true
+            },
+            {
+                "domains": {
+                    "title": "Domaines du GHT Bouches du Rhone",
+                    "value": [
+                        "aphm.mssante.fr",
+                        "ch-allauch.mssante.fr",
+                        "ch-aubagne.mssante.fr",
+                        "ch-laciotat.mssante.fr",
+                        "ch-salon.mssante.fr",
+                        "ch-edouard-toulouse.mssante.fr",
+                        "ch-aix.mssante.fr",
+                        "ch-montperrin.mssante.fr",
+                        "ch-valvert.mssante.fr",
+                        "ch-arles.mssante.fr"
+                    ]
+                },
+                "filename": "ght13.json",
+                "name": "ght13",
+                "rss": false,
+                "save_history": true
+            }
+        ],
+        "stats": {
+            "filename": "rpps_stats.json",
+            "save_history": true
+        }
+    }
+}
