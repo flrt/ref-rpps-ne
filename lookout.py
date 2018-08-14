@@ -341,18 +341,18 @@ def main():
     parser.add_argument("--stat", help="Affiche les stats")
 
     args = parser.parse_args()
-    if args.config:
+    if args.config and os.path.exists(args.config):
         app = App(args.config)
 
-        if args.stat:
+        if args.stat and args.txt and os.path.exists(args.txt):
             app.statistics(args.txt)
 
         else:
             app.process(args.zip)
 
-            if args.dataftp:
+            if args.dataftp and os.path.exists(args.dataftp):
                 app.upload_data(args.dataftp)
-            if args.feedftp:
+            if args.feedftp and os.path.exists(args.feedftp):
                 app.upload_feed(args.feedftp)
     else:
         sys.stdout.write("/!\\ Aucune action définie !\n\n")
@@ -363,6 +363,6 @@ def main():
 if __name__ == "__main__":
     loggers = helpers.stdout_logger(
         ["downloader", "differentia", "app", "digester", "practitioner", "info"],
-        logging.DEBUG,
+        logging.INFO,
     )
     main()

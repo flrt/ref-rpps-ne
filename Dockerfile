@@ -16,10 +16,16 @@ RUN pip install arrow
 RUN pip install pandas
 RUN pip install tweepy
 
+WORKDIR /opt
+RUN mkdir /opt/feed
+
+ADD cert /opt/cert/
+ADD *.py /opt/
 
 # install lib to produce Atom/RSS
 RUN git clone https://github.com/flrt/atom_gen.git /opt/atom_gen
 RUN pip install /opt/atom_gen/dist/atom_gen-1.0.tar.gz
 RUN git clone https://github.com/flrt/atom_to_rss2.git atomtorss2
 
-WORKDIR /opt
+ADD run.sh /opt/run.sh
+
