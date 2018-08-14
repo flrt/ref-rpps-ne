@@ -81,6 +81,7 @@ class App:
 
         try:
             self.rss_history = self.properties.local.rss_history
+            self.logger.info(f"Max History = {self.rss_history} ({type(self.rss_history)})")
         except AttributeError as attr_err:
             self.logger.info("[config] No RSS history limit (%s)" % attr_err)
 
@@ -239,7 +240,7 @@ class App:
             rpps_updates["updates"].insert(0, d)
 
             if self.rss_history:
-                rpps_updates = rpps_updates[: self.rss_history]
+                rpps_updates["updates"] = rpps_updates["updates"][:self.rss_history]
 
             helpers.save_json(self.rss_filename, rpps_updates)
 

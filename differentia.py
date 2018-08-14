@@ -37,16 +37,17 @@ class Diff:
         old_data_fn = self.data_filename
 
         self.logger.info("Diff old = %s / new = %s" % (old_data_fn, filename))
-        self.logger.info("Diff old = %s " % (os.path.abspath(old_data_fn)))
-        self.logger.info("new      = %s " % (os.path.abspath(filename)))
 
-        old_sha_data = old_d.digest(old_data_fn)
+        old_sha_data = None
+        if old_data_fn:
+            old_sha_data = old_d.digest(old_data_fn)
+
         new_sha_data = new_d.digest(filename)
 
         diff_data = []
 
         for (sha, linenum) in new_sha_data.items():
-            if sha not in old_sha_data:
+            if not old_sha_data or sha not in old_sha_data:
                 diff_data.append((sha, linenum + 1, new_d.data[linenum]))
         return diff_data
 

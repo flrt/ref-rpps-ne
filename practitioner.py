@@ -251,7 +251,16 @@ class RPPS:
         return None, None
 
     def is_newer(self, filename):
+        """
+            Test if file is newer than the last check
+            Last check can be null
+        :param filename: new filename (containing date) to compare
+        :return: True if the file is newer
+        """
         self.logger.debug("prev date = %s" % self.last_check_date)
+        if not self.last_check_date:
+            return True
+
         _fmt = "%Y%m%d%H%M"
         _remote_fn, _date = self.extract_data_filename(filename)
         self.logger.debug("extract date from %s -> %s" % (_remote_fn, _date))

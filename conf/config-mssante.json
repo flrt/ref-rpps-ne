@@ -2,15 +2,16 @@
     "URL": "https://service.annuaire.sante.fr/annuaire-sante-webservices/V300/services/extraction/Extraction_Correspondance_MSSante",
     "local": {
         "data": {
-            "Extraction_Correspondance_MSSante": "files/Extraction_Correspondance_MSSante_201808130820.txt"
+            "Extraction_Correspondance_MSSante": null
         },
-        "last_check": "201808131047",
-        "last_check_old": "201807310813",
+        "last_check": null,
         "rss_updates_filename": "rss_mssante.json",
         "save_diff_data": true,
         "save_diff_index": true,
         "storage": "files",
-        "rss_history": 15
+        "rss_history": 15,
+        "old_data":"files/Extraction_Correspondance_MSSante_201808130820.txt",
+        "last_check_old": "201808131047"
     },
     "pub": {
         "feed_base": "http://www.opikanoba.org/feeds/rpps",
