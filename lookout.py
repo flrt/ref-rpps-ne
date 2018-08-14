@@ -81,7 +81,9 @@ class App:
 
         try:
             self.rss_history = self.properties.local.rss_history
-            self.logger.info(f"Max History = {self.rss_history} ({type(self.rss_history)})")
+            self.logger.info(
+                f"Max History = {self.rss_history} ({type(self.rss_history)})"
+            )
         except AttributeError as attr_err:
             self.logger.info("[config] No RSS history limit (%s)" % attr_err)
 
@@ -240,7 +242,7 @@ class App:
             rpps_updates["updates"].insert(0, d)
 
             if self.rss_history:
-                rpps_updates["updates"] = rpps_updates["updates"][:self.rss_history]
+                rpps_updates["updates"] = rpps_updates["updates"][: self.rss_history]
 
             helpers.save_json(self.rss_filename, rpps_updates)
 
@@ -332,7 +334,8 @@ def main():
         "--zip", help="Fichier ZIP contenant l'extraction RPPS ou MSSante"
     )
     parser.add_argument(
-        "--txt", help="Fichier texte contenant l'extraction RPPS ou MSSante (pour stats)"
+        "--txt",
+        help="Fichier texte contenant l'extraction RPPS ou MSSante (pour stats)",
     )
 
     parser.add_argument("--stat", help="Affiche les stats")
