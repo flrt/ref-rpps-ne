@@ -1,0 +1,20 @@
+{
+  "header":{
+    "title": "Mise à jour du Référentiel RPPS",
+    "subtitle": "Referentiel - RPPS / ASIP",
+    "link" : "https://annuaire.sante.fr/web/site-pro/extractions-publiques",
+    "author": {"name":"Frederic LAURENT", "email":"frederic.laurent@gmail.com"},
+    "id":"http://www.todo.org/feeds/rpps",
+    "category":"referentiel,asip,RPPS",
+    "atom_feedname": "asip_rpps.xml",
+    "rss2_feedname": "asip_rpps.rss2"
+
+  },
+  "entry" : {
+    "link_mask":"http://",
+    "urn_mask":"urn:asip:rpps:u",
+    "title_mask" : "Version",
+    "content_mask": "Version"
+  },
+  "output_dir":"feed"
+}

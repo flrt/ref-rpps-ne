@@ -1,0 +1,26 @@
+{
+    "URL": "https://service.annuaire.sante.fr/annuaire-sante-webservices/V300/services/extraction/PS_LibreAcces",
+    "local": {
+        "data": {
+            "PS_LibreAcces_Dipl_AutExerc": null,
+            "PS_LibreAcces_Personne_activite": null,
+            "PS_LibreAcces_SavoirFaire": null,
+        },
+        "last_check": null,
+        "rss_updates_filename": "rss_ps_act.json",
+        "save_diff_data": true,
+        "save_diff_index": true,
+        "storage": "files",
+        "rss_history": 15
+    },
+    "pub": {
+        "feed_base": "http://www.todo.org/feeds/rpps",
+        "url_base": "https://www.todo.org/data/rpps"
+    },
+    "tracks": {
+        "PS_LibreAcces_Personne_activite": {
+            "filename": "rpps_stats.json",
+            "save_history": true
+        }
+    }
+}

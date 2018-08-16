@@ -29,6 +29,8 @@ class App:
         Main App
     """
 
+    DEFAULT_DIR = "default"
+
     def __init__(self, config_filename):
         """
             Init class, loads config file
@@ -38,15 +40,18 @@ class App:
         self.logger = logging.getLogger("app")
         self.logger.info("Config : %s" % config_filename)
 
+        # domain rpps or mssante. computed by naming convention of config files
+        self.domain = None
+
         self.config_filename = config_filename
-        self.properties = helpers.json_to_object(config_filename)
+        self.init_properties()
         self.logger.info(self.properties)
 
         self.rss_filename = None
         self.rss_history = None
         self.stats_filename = None
 
-        self.feed = atom.Feed("rpps", self.properties.pub.feed_base)
+        self.feed = atom.Feed(self.domain, self.properties.pub.feed_base)
         self.feed.load_config()
 
         self.rpps_data = practitioner.RPPS(properties=self.properties)
@@ -54,9 +59,25 @@ class App:
         self.data_files = []
         self.previous_filename = {}
 
-        self.init_properties()
-
     def init_properties(self):
+        config_filename = self.config_filename
+        if not os.path.exists(os.path.abspath(self.config_filename)):
+            config_filename = os.path.join(
+                App.DEFAULT_DIR, os.path.basename(self.config_filename)
+            )
+            self.logger.info(
+                f"No config file {self.config_filename}. Using default {config_filename}"
+            )
+
+        self.properties = helpers.json_to_object(config_filename)
+
+        if "rpps" in os.path.basename(config_filename):
+            self.domain = "rss"
+        elif "mssante" in os.path.basename(config_filename):
+            self.domain = "mssante"
+        else:
+            self.domain = "unk"
+
         try:
             self.rss_filename = os.path.join(
                 self.properties.local.storage,
