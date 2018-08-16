@@ -31,49 +31,67 @@ class App:
 
     DEFAULT_DIR = "default"
 
-    def __init__(self, config_filename):
+    def __init__(self, config):
         """
             Init class, loads config file
             :param config_filename: configration file name
         """
 
         self.logger = logging.getLogger("app")
-        self.logger.info("Config : %s" % config_filename)
+        self.logger.info("Config : %s" % config)
 
         # domain rpps or mssante. computed by naming convention of config files
         self.domain = None
 
-        self.config_filename = config_filename
-        self.init_properties()
-        self.logger.info(self.properties)
+        self.cfg_filename = config
+        self.config_dir = None
 
+        self.previous_filename = {}
+        self.data_files = []
         self.rss_filename = None
         self.rss_history = None
         self.stats_filename = None
+        self.feed = None
 
-        self.feed = atom.Feed(self.domain, self.properties.pub.feed_base)
-        self.feed.load_config()
+        self.init_properties()
+        self.logger.info(self.properties)
+
+        self.init_feed()
 
         self.rpps_data = practitioner.RPPS(properties=self.properties)
 
-        self.data_files = []
-        self.previous_filename = {}
 
-    def init_properties(self):
-        config_filename = self.config_filename
-        if not os.path.exists(os.path.abspath(self.config_filename)):
-            config_filename = os.path.join(
-                App.DEFAULT_DIR, os.path.basename(self.config_filename)
+    def config_filename(self, config):
+        """
+            locates the config filename. If the argument is found, takes it.
+            Otherwise, takes the same filename (default content) in defaut directory
+
+        :param config: config filename
+        :return: good config filename
+        """
+        cfg_filename = config
+        if not os.path.exists(os.path.abspath(cfg_filename)):
+            cfg_filename = os.path.join(
+                App.DEFAULT_DIR, os.path.basename(config)
             )
             self.logger.info(
-                f"No config file {self.config_filename}. Using default {config_filename}"
+                f"No config file {config}. Using default {cfg_filename}"
             )
+        return cfg_filename
 
-        self.properties = helpers.json_to_object(config_filename)
 
-        if "rpps" in os.path.basename(config_filename):
-            self.domain = "rss"
-        elif "mssante" in os.path.basename(config_filename):
+    def init_properties(self):
+        """
+            Loads properties
+            Set the config directory depending of the existance of the config file
+
+        :return:
+        """
+        self.properties = helpers.json_to_object(self.config_filename(self.cfg_filename))
+
+        if "rpps" in os.path.basename(self.cfg_filename):
+            self.domain = "rpps"
+        elif "mssante" in os.path.basename(self.cfg_filename):
             self.domain = "mssante"
         else:
             self.domain = "unk"
@@ -107,6 +125,23 @@ class App:
             )
         except AttributeError as attr_err:
             self.logger.info("[config] No RSS history limit (%s)" % attr_err)
+
+    def init_feed(self):
+        """
+            Init feed.
+            If the classical config name (naming convention) is found, no special is done
+            If the config file name is not found, take the same filename but in the default directory
+            and loads it
+
+        :return: -
+        """
+        self.feed = atom.Feed(self.domain, self.properties.pub.feed_base)
+
+        cfg_feed_fn = self.feed.get_config_filename()
+        cfg_feed_fn2 = self.config_filename(cfg_feed_fn)
+        self.logger.debug(f"Feed config {cfg_feed_fn} - {cfg_feed_fn2}")
+        self.feed.load_config(self.config_filename(cfg_feed_fn))
+
 
     def make_diff_data_filename(self, fn):
         """
@@ -314,7 +349,7 @@ class App:
             data=new_data_section, last_check=self.rpps_data.last_check_date
         )
         new_props = self.properties._replace(local=new_local_section)
-        helpers.object_to_json(new_props, self.config_filename)
+        helpers.object_to_json(new_props, self.cfg_filename)
 
     def upload_data(self, config):
         """
@@ -362,7 +397,7 @@ def main():
     parser.add_argument("--stat", help="Affiche les stats")
 
     args = parser.parse_args()
-    if args.config and os.path.exists(args.config):
+    if args.config:
         app = App(args.config)
 
         if args.stat and args.txt and os.path.exists(args.txt):
@@ -383,7 +418,7 @@ def main():
 
 if __name__ == "__main__":
     loggers = helpers.stdout_logger(
-        ["downloader", "differentia", "app", "digester", "practitioner", "info"],
-        logging.INFO,
+        ["downloader", "differentia", "app", "digester", "practitioner", "info", "feed"],
+        logging.DEBUG,
     )
     main()

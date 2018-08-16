@@ -17,9 +17,11 @@ RUN pip install pandas
 RUN pip install tweepy
 
 WORKDIR /opt
-RUN mkdir /opt/feed
 
+RUN mkdir /opt/feed
 ADD cert /opt/cert/
+ADD default /opt/default
+
 ADD *.py /opt/
 
 # install lib to produce Atom/RSS
