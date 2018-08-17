@@ -60,7 +60,6 @@ class App:
 
         self.rpps_data = practitioner.RPPS(properties=self.properties)
 
-
     def config_filename(self, config):
         """
             locates the config filename. If the argument is found, takes it.
@@ -71,14 +70,9 @@ class App:
         """
         cfg_filename = config
         if not os.path.exists(os.path.abspath(cfg_filename)):
-            cfg_filename = os.path.join(
-                App.DEFAULT_DIR, os.path.basename(config)
-            )
-            self.logger.info(
-                f"No config file {config}. Using default {cfg_filename}"
-            )
+            cfg_filename = os.path.join(App.DEFAULT_DIR, os.path.basename(config))
+            self.logger.info(f"No config file {config}. Using default {cfg_filename}")
         return cfg_filename
-
 
     def init_properties(self):
         """
@@ -87,7 +81,9 @@ class App:
 
         :return:
         """
-        self.properties = helpers.json_to_object(self.config_filename(self.cfg_filename))
+        self.properties = helpers.json_to_object(
+            self.config_filename(self.cfg_filename)
+        )
 
         if "rpps" in os.path.basename(self.cfg_filename):
             self.domain = "rpps"
@@ -142,7 +138,6 @@ class App:
         self.logger.debug(f"Feed config {cfg_feed_fn} - {cfg_feed_fn2}")
         self.feed.load_config(self.config_filename(cfg_feed_fn))
 
-
     def make_diff_data_filename(self, fn):
         """
             Builds the name of the data file of difference
@@ -155,6 +150,7 @@ class App:
                 data_filename = os.path.join(
                     self.properties.local.storage, f"new_{os.path.basename(fn)}"
                 )
+                self.data_files.append(data_filename)
         except AttributeError as attr_err:
             self.logger.debug(f"[config] Don't save diff data ({attr_err}) for {fn} ")
         self.logger.debug(f"make_diff_data_filename -> {data_filename}")
@@ -172,6 +168,7 @@ class App:
                 data_filename = os.path.join(
                     self.properties.local.storage, f"index_{os.path.basename(fn)}"
                 )
+                self.data_files.append(data_filename)
         except AttributeError as attr_err:
             self.logger.debug(f"[config] Don't save diff index ({attr_err}) for {fn} ")
         self.logger.debug(f"make_diff_index_filename -> {data_filename}")
@@ -204,7 +201,7 @@ class App:
 
             self.logger.info(f"Zip data file : {_zip}")
             # compute Zip file
-            if self.rpps_data.is_newer(_zip):
+            if _zip and self.rpps_data.is_newer(_zip):
                 self.logger.debug(f"Unzip data file : {_zip}")
 
                 info_blocks = []
@@ -258,7 +255,8 @@ class App:
                     self.logger.debug(f"Data files : {self.rpps_data.data_files}")
                     self.logger.debug(f"Data tracks : {data_tracks}")
 
-                    self.rpps_data.save_tracks(data_tracks)
+                    lst = self.rpps_data.save_tracks(data_tracks)
+                    self.data_files.extend(lst)
 
                 # update RSS
                 self.make_rss(info_blocks)
@@ -370,6 +368,9 @@ class App:
         """
         self.logger.info("Upload feeds updates")
         act = action.UploadAction(conf_filename=config)
+        self.logger.debug(
+            f"Files to upload : Atom={self.feed.feed_filename} RSS2={self.feed.rss2_filename}"
+        )
         act.process([self.feed.feed_filename, self.feed.rss2_filename])
 
 
@@ -418,7 +419,15 @@ def main():
 
 if __name__ == "__main__":
     loggers = helpers.stdout_logger(
-        ["downloader", "differentia", "app", "digester", "practitioner", "info", "feed"],
+        [
+            "downloader",
+            "differentia",
+            "app",
+            "digester",
+            "practitioner",
+            "info",
+            "feed",
+        ],
         logging.DEBUG,
     )
     main()
