@@ -228,6 +228,9 @@ class App:
                     # update last computed file
                     self.previous_filename[_root_fn] = _new_data_file
 
+                    # get the date included in the filename
+                    _remote_fn, _date = self.rpps_data.extract_data_filename(_zip)
+                    self.rpps_data.set_data_date(self.rpps_data.parse_date(_date))
                     # extract informations
                     data_tracks = {
                         "filename": _new_data_file,

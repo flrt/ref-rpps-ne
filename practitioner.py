@@ -250,6 +250,12 @@ class RPPS:
 
         return None, None
 
+    def parse_date(self, datestr, fmt="%Y%m%d%H%M"):
+        return dt.strptime(datestr, fmt)
+
+    def set_data_date(self, mydate, fmt="%Y-%m-%d"):
+        self.data_date = mydate.strftime(fmt)
+
     def is_newer(self, filename):
         """
             Test if file is newer than the last check
@@ -261,11 +267,10 @@ class RPPS:
         if not self.last_check_date:
             return True
 
-        _fmt = "%Y%m%d%H%M"
         _remote_fn, _date = self.extract_data_filename(filename)
         self.logger.debug("extract date from %s -> %s" % (_remote_fn, _date))
 
-        delta = dt.strptime(_date, _fmt) - dt.strptime(self.last_check_date, _fmt)
+        delta = self.parse_date(_date) - self.parse_date(self.last_check_date)
         return delta.total_seconds() > 0
 
     def update_last_check_date(self, filename):
@@ -484,6 +489,14 @@ class RPPS:
             ],
             "rss": True,
         }
+
+        # search if a filename is defined for general infos : stats=true
+        for block in self.tracks.Extraction_Correspondance_MSSante:
+            if "stats" in block._fields and block.stats:
+                general["output"] = block.filename
+                general["history_flag"] = (
+                    "save_history" in block._fields and block.save_history
+                )
 
         extracted = [general]
 
