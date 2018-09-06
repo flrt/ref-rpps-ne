@@ -20,7 +20,7 @@
     },
     "tracks": {
         "PS_LibreAcces_Personne_activite": {
-            "filename": "rpps_stats.json",
+            "filename": "stats_rpps.json",
             "save_history": true
         }
     }

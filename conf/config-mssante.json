@@ -27,6 +27,13 @@
                 "top": 10
             },
             {
+                "filename": "stats_mssante.json",
+                "name": "stats",
+                "rss": true,
+                "save_history": true,
+                "stats": true
+            },
+            {
                 "domains": {
                     "title": "Domaines des CHU",
                     "value": [
