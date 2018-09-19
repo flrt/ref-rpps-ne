@@ -97,9 +97,9 @@ class Info:
         info = dict(
             html=content.xml2text(root, atom.Feed.FEED_ENCODING, xml_decl=False),
             files=list(map(lambda x: self.pub_url + os.path.basename(x), data_files)),
-            title=f"Mise à jour RPPS du {data_date}",
+            title=f"Mise à jour du {data_date}",
             id=f"rpps{data_date}",
             date=dt.now(datetime.timezone.utc).isoformat(sep="T"),
-            summary=f"Informations sur la publication RPPS du {data_date}",
+            summary=f"Informations sur la publication du {data_date}",
         )
         return info
