@@ -116,7 +116,7 @@ et de lancer
     docker run -t --rm -v "$PWD"/log:/opt/log  \
                 -v "$PWD"/conf:/opt/conf \
                 -v "$PWD"/files:/opt/files \
-                ref-rpps-ne sh run.sh
+                flrt/ref-rpps-ne sh run.sh
 
 Cette commande permet de lancer l'analyse des fichiers RPPS et MSSanté en utilisant les 
 répertoires locaux dans lesquels seront stockés :
