@@ -69,13 +69,16 @@ class Digester:
 
         with open(self.sha_filename(filename), "w") as fout:
             line_number = 0
-            with open(filename, "r") as fin:
-                for line in fin.readlines():
-                    digest = hashlib.sha256(line.encode("utf8")).hexdigest()
-                    data_sha[digest] = line_number
-                    self.data.append(line.strip())
-                    fout.write("%d:%s\n" % (line_number, digest))
-                    line_number += 1
+            try:
+                with open(filename, "r") as fin:
+                    for line in fin.readlines():
+                        digest = hashlib.sha256(line.encode("utf8")).hexdigest()
+                        data_sha[digest] = line_number
+                        self.data.append(line.strip())
+                        fout.write("%d:%s\n" % (line_number, digest))
+                        line_number += 1
+            except OSError as oserr:
+                self.logger.error(f"Error while loading {filename} : {str(oserr)}")
         return data_sha
 
     def load_digest(self, filename):
@@ -102,9 +105,12 @@ class Digester:
         self.logger.info("Load Data <: %s" % filename)
         del self.data[:]
 
-        with open(filename, "r") as fin:
-            for line in fin.readlines():
-                self.data.append(line.strip())
+        try:
+            with open(filename, "r") as fin:
+                for line in fin.readlines():
+                    self.data.append(line.strip())
+        except OSError as oserr:
+            self.logger.error(f"Error while loading data {str(oserr)}")
 
 
 if __name__ == "__main__":

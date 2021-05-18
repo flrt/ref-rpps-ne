@@ -7,3 +7,4 @@ xlrd
 arrow
 pandas
 tweepy
+atom_gen
