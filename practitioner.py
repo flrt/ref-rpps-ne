@@ -174,25 +174,23 @@ class RPPS:
         try:
             self.data_url = properties.URL
         except AttributeError as ae:
-            self.logger.warning("[config] No/Wrong URL properties : %s" % ae)
+            self.logger.warning(f"[config] No/Wrong URL properties : {ae}")
 
         try:
             self.last_check_date = properties.local.last_check
         except AttributeError as ae:
-            self.logger.warning(
-                "[config] No/Wrong local.last_check properties : %s" % ae
-            )
+            self.logger.warning(f"[config] No/Wrong local.last_check properties : {ae}")
 
         try:
             self.local_storage = properties.local.storage
         except AttributeError as ae:
-            self.logger.warning("[config] No/Wrong local.storage properties : %s" % ae)
-            self.logger.info("Using temp dir : %s" % self.local_storage)
+            self.logger.warning(f"[config] No/Wrong local.storage properties : {ae}")
+            self.logger.info(f"Using temp dir : {self.local_storage}")
 
         try:
             self.tracks = properties.tracks
         except AttributeError as ae:
-            self.logger.warning("[config] No/Wrong tracks properties : %s" % ae)
+            self.logger.warning(f"[config] No/Wrong tracks properties : {ae}")
 
     def find_current_data(self):
         """
@@ -218,9 +216,7 @@ class RPPS:
             if regex_filename:
                 _filename = regex_filename.group(1)
         else:
-            self.logger.warning(
-                "Error accessing URL [{}] {}".format(req.status_code, self.data_url)
-            )
+            self.logger.warning(f"Error accessing URL [{req.status_code}] {self.data_url}")
 
         return _filename
 
@@ -241,7 +237,7 @@ class RPPS:
             remote file name
             data date (ex: 201807300827)
         """
-        self.logger.debug("Extract data from %s" % url)
+        self.logger.debug(f"Extract data from {url}")
         re_eval = self.re_enddate.match(url)
         if re_eval:
             remote_fn = re_eval.group(0)
@@ -263,12 +259,12 @@ class RPPS:
         :param filename: new filename (containing date) to compare
         :return: True if the file is newer
         """
-        self.logger.debug("prev date = %s" % self.last_check_date)
+        self.logger.debug(f"prev date = {self.last_check_date}")
         if not self.last_check_date:
             return True
 
         _remote_fn, _date = self.extract_data_filename(filename)
-        self.logger.debug("extract date from %s -> %s" % (_remote_fn, _date))
+        self.logger.debug(f"extract date from {_remote_fn} -> {_date}")
 
         delta = self.parse_date(_date) - self.parse_date(self.last_check_date)
         return delta.total_seconds() > 0
@@ -279,9 +275,9 @@ class RPPS:
 
     def retrieve_current(self):
         _remote_fn = self.find_current_data()
-        self.logger.debug("Remote={}".format(_remote_fn))
+        self.logger.debug(f"Remote={_remote_fn}")
 
-        self.logger.debug("prev date = {}".format(self.last_check_date))
+        self.logger.debug(f"prev date = {self.last_check_date}")
 
         if self.is_newer(_remote_fn):
             self.logger.info("Newer file available -> download")
@@ -296,7 +292,7 @@ class RPPS:
         zipf = zipfile.ZipFile(zfile)
         testzip = zipf.testzip()
         if testzip:
-            self.logger.error("Zip ERROR : %s" % testzip)
+            self.logger.error(f"Zip ERROR : {testzip}")
             return []
         else:
             zipf.extractall(dest_dir)
@@ -312,8 +308,8 @@ class RPPS:
         :param remote_zip: remote zip filename
         :return: absolute name of CSV file
         """
-        self.logger.info("Download zip: %s" % remote_zip)
-        self.logger.info("Extract to : %s" % download_dir)
+        self.logger.info(f"Download zip: {remote_zip}")
+        self.logger.info(f"Extract to : {download_dir}")
 
         if download_dir and not os.path.exists(download_dir):
             os.makedirs(download_dir)
@@ -340,15 +336,12 @@ class RPPS:
         :param difflist: list of differences
         :return: -
         """
-        self.logger.info(
-            "Save diff zip files : data={}, diff={}".format(
-                data_filename, diff_filename
-            )
-        )
+        self.logger.info(f"Save diff zip files : data={data_filename}, diff={diff_filename}")
+
         if data_filename:
             with open(data_filename, "w") as fdata:
                 for _hash, num, data in difflist:
-                    fdata.write("{}\n".format(data))
+                    fdata.write(f"{data}\n")
 
             self.data_files.append(data_filename)
 
