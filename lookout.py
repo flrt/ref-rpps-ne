@@ -148,7 +148,7 @@ class App:
         try:
             if self.properties.local.save_diff_index:
                 data_filename = os.path.join(
-                    self.properties.local.storage, f"new_{os.path.basename(fn)}"
+                    self.properties.local.storage, f"new_{os.path.basename(fn)}.diff"
                 )
                 self.data_files.append(data_filename)
         except AttributeError as attr_err:
@@ -166,7 +166,7 @@ class App:
         try:
             if self.properties.local.save_diff_index:
                 data_filename = os.path.join(
-                    self.properties.local.storage, f"index_{os.path.basename(fn)}"
+                    self.properties.local.storage, f"index_{os.path.basename(fn)}.csv"
                 )
                 self.data_files.append(data_filename)
         except AttributeError as attr_err:

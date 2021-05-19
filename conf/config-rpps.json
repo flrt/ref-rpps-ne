@@ -2,17 +2,17 @@
     "URL": "https://service.annuaire.sante.fr/annuaire-sante-webservices/V300/services/extraction/PS_LibreAcces",
     "local": {
         "data": {
-            "PS_LibreAcces_Dipl_AutExerc": "files/PS_LibreAcces_Dipl_AutExerc_201808120759.txt",
-            "PS_LibreAcces_Personne_activite": "files/PS_LibreAcces_Personne_activite_201808120759.txt",
-            "PS_LibreAcces_SavoirFaire": "files/PS_LibreAcces_SavoirFaire_201808120759.txt"
+            "PS_LibreAcces_Dipl_AutExerc": "files/PS_LibreAcces_Dipl_AutExerc_202105180922.txt",
+            "PS_LibreAcces_Personne_activite": "files/PS_LibreAcces_Personne_activite_202105180922.txt",
+            "PS_LibreAcces_SavoirFaire": "files/PS_LibreAcces_SavoirFaire_202105180922.txt"
         },
-        "last_check": "201808121033",
+        "last_check": "202105181606",
         "last_check_old": "201808090830",
+        "rss_history": 15,
         "rss_updates_filename": "rss_ps_act.json",
         "save_diff_data": true,
         "save_diff_index": true,
-        "storage": "files",
-        "rss_history": 15
+        "storage": "files"
     },
     "pub": {
         "feed_base": "http://www.opikanoba.org/feeds/rpps",

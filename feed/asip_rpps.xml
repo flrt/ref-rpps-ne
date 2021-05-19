@@ -5,7 +5,7 @@
   <subtitle>Referentiel - RPPS / ASIP</subtitle>
   <link href="https://annuaire.sante.fr/web/site-pro/extractions-publiques" rel="related"/>
   <link href="http://www.opikanoba.org/feeds/rpps/asip_rpps.xml" rel="self"/>
-  <updated>2018-08-14T09:42:51.157234+00:00</updated>
+  <updated>2021-05-19T09:22:04.535060+00:00</updated>
   <author>
     <name>Frederic LAURENT</name>
     <email>frederic.laurent@gmail.com</email>
@@ -14,101 +14,107 @@
   <generator uri="https://github.com/flrt/atom_gen" version="1.0">python program - atom.py</generator>
   <rights>CC BY-SA 3.0 FR</rights>
   <entry>
-    <title>Mise à jour RPPS du 2018-08-14</title>
-    <id>rpps2018-08-14</id>
+    <title>Mise à jour du 2021-05-18</title>
+    <link href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.diff" rel="related" type="text/vnd.diff"/>
+    <link href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.csv" rel="related" type="text/csv"/>
+    <link href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_Personne_activite_202105180922.txt.diff" rel="related" type="text/vnd.diff"/>
+    <link href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_Personne_activite_202105180922.txt.csv" rel="related" type="text/csv"/>
+    <link href="https://www.opikanoba.org/data/rpps/stats_rpps.json" rel="related" type="application/json"/>
+    <link href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_SavoirFaire_202105180922.txt.diff" rel="related" type="text/vnd.diff"/>
+    <link href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_SavoirFaire_202105180922.txt.csv" rel="related" type="text/csv"/>
+    <id>rpps2021-05-18</id>
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
         <article>
           <div>
-            <h1>0 Fichier à télécharger : </h1>
+            <h1>7 Fichiers à télécharger : </h1>
+            <ul>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.diff">new_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.diff</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.csv">index_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.csv</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_Personne_activite_202105180922.txt.diff">new_PS_LibreAcces_Personne_activite_202105180922.txt.diff</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_Personne_activite_202105180922.txt.csv">index_PS_LibreAcces_Personne_activite_202105180922.txt.csv</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/stats_rpps.json">stats_rpps.json</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/new_PS_LibreAcces_SavoirFaire_202105180922.txt.diff">new_PS_LibreAcces_SavoirFaire_202105180922.txt.diff</a>
+              </li>
+              <li>
+                <a href="https://www.opikanoba.org/data/rpps/index_PS_LibreAcces_SavoirFaire_202105180922.txt.csv">index_PS_LibreAcces_SavoirFaire_202105180922.txt.csv</a>
+              </li>
+            </ul>
           </div>
           <div>
   <div>
     <h3>Fichiers à télécharger</h3>
     <ul>
       <li>
-        <a href="https://www.opikanoba.org/data/rpps/files/new_Extraction_Correspondance_MSSante_201808130820.txt">fichier de données (delta): new_Extraction_Correspondance_MSSante_201808130820.txt</a>
+        <a href="https://www.opikanoba.org/data/rpps/files/new_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.diff">fichier de données (delta): new_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.diff</a>
       </li>
       <li>
-        <a href="https://www.opikanoba.org/data/rpps/files/index_Extraction_Correspondance_MSSante_201808130820.txt">fichier d'index des différences: index_Extraction_Correspondance_MSSante_201808130820.txt</a>
+        <a href="https://www.opikanoba.org/data/rpps/files/index_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.csv">fichier d'index des différences: index_PS_LibreAcces_Dipl_AutExerc_202105180922.txt.csv</a>
       </li>
     </ul>
     <h3>Statistiques</h3>
-    <h2>Informations MSSanté</h2>
+    <h2>Informations fichier des Diplômes</h2>
     <ul>
-      <li>Nombre de lignes : 137170</li>
-      <li>Nombre de lignes modifiées : 137171</li>
-      <li>Nombre de profession : 19 - top 5 : Médecin (83055), Infirmier (14955), Masseur-Kiné (8369), Orthophoniste (7681), Pharmacien (7208)</li>
-      <li>Mails MSsante : 136616</li>
-      <li>Domaines MSsante : 623</li>
-      <li>Types de boites aux lettre : Médecin (83055), Infirmier (14955), Masseur-Kiné (8369), Orthophoniste (7681), Pharmacien (7208)</li>
+      <li>Nombre de lignes : 905276</li>
+      <li>Nombre de lignes modifiées : 0</li>
+      <li>Nombre de RPPS : 610746</li>
+      <li>Nombre de diplomes differents : 533</li>
     </ul>
-    <h2>Top 10</h2>
+  </div>
+  <div>
+    <h3>Fichiers à télécharger</h3>
     <ul>
-      <li>medecin.mssante.fr : 25857</li>
-      <li>aura.mssante.fr : 11897</li>
-      <li>pro.mssante.fr : 7339</li>
-      <li>infirmier.mssante.fr : 6497</li>
-      <li>orthophoniste.mssante.fr : 5503</li>
-      <li>ramsaygds.mssante.fr : 5184</li>
-      <li>medecin.mp.mssante.fr : 4558</li>
-      <li>masseur-kinesitherapeute.mssante.fr : 4405</li>
-      <li>ssa.mssante.fr : 4227</li>
-      <li>sephira.mssante.fr : 3986</li>
+      <li>
+        <a href="https://www.opikanoba.org/data/rpps/files/new_PS_LibreAcces_Personne_activite_202105180922.txt.diff">fichier de données (delta): new_PS_LibreAcces_Personne_activite_202105180922.txt.diff</a>
+      </li>
+      <li>
+        <a href="https://www.opikanoba.org/data/rpps/files/index_PS_LibreAcces_Personne_activite_202105180922.txt.csv">fichier d'index des différences: index_PS_LibreAcces_Personne_activite_202105180922.txt.csv</a>
+      </li>
     </ul>
-    <h2>chu-mssante</h2>
+    <h3>Statistiques</h3>
+    <h2>Informations fichier des personnes</h2>
     <ul>
-      <li>chu-amiens.mssante.fr : 6</li>
-      <li>chu-rennes.mssante.fr : 4</li>
-      <li>chu-besancon.mssante.fr : 597</li>
-      <li>chu-bordeaux.mssante.fr : 246</li>
-      <li>chu-brest.mssante.fr : 0</li>
-      <li>chu-caen.mssante.fr : 714</li>
-      <li>chu-clermontferrand.mssante.fr : 82</li>
-      <li>chu-dijon.mssante.fr : 725</li>
-      <li>chu-grenoble.mssante.fr : 0</li>
-      <li>chu-lille.mssante.fr : 0</li>
-      <li>chu-limoges.mssante.fr : 700</li>
-      <li>chu-lyon.mssante.fr : 10</li>
-      <li>aphm.mssante.fr : 19</li>
-      <li>sante-martinique.mssante.fr : 58</li>
-      <li>hpdir-metz.mssante.fr : 0</li>
-      <li>chu-montpellier.mssante.fr : 2334</li>
-      <li>chu-nancy.mssante.fr : 0</li>
-      <li>chu-nantes.mssante.fr : 3</li>
-      <li>chu-nice.mssante.fr : 972</li>
-      <li>chu-nimes.mssante.fr : 652</li>
-      <li>chr-orleans.mssante.fr : 210</li>
-      <li>aphp.mssante.fr : 928</li>
-      <li>guadeloupe.mssante.fr : 91</li>
-      <li>chu-poitiers.mssante.fr : 671</li>
-      <li>chu-reims.mssante.fr : 0</li>
-      <li>chu-rennes.mssante.fr : 4</li>
-      <li>chu-rouen.mssante.fr : 920</li>
-      <li>chu-st-etienne.mssante.fr : 0</li>
-      <li>chru-strasbourg.mssante.fr : 1462</li>
-      <li>chu-toulouse.mssante.fr : 1192</li>
-      <li>chu-tours.mssante.fr : 767</li>
+      <li>Nombre de lignes : 2127071</li>
+      <li>Nombre de lignes modifiées : 0</li>
+      <li>Nombre de RPPS : 802756</li>
+      <li>Nombre de ADELI : 1324315</li>
+      <li>Nombre de Structures référencées : 422592</li>
     </ul>
-    <h2>ght13</h2>
+  </div>
+  <div>
+    <h3>Fichiers à télécharger</h3>
     <ul>
-      <li>aphm.mssante.fr : 19</li>
-      <li>ch-allauch.mssante.fr : 16</li>
-      <li>ch-aubagne.mssante.fr : 73</li>
-      <li>ch-laciotat.mssante.fr : 41</li>
-      <li>ch-salon.mssante.fr : 68</li>
-      <li>ch-edouard-toulouse.mssante.fr : 86</li>
-      <li>ch-aix.mssante.fr : 96</li>
-      <li>ch-montperrin.mssante.fr : 268</li>
-      <li>ch-valvert.mssante.fr : 55</li>
-      <li>ch-arles.mssante.fr : 145</li>
+      <li>
+        <a href="https://www.opikanoba.org/data/rpps/files/new_PS_LibreAcces_SavoirFaire_202105180922.txt.diff">fichier de données (delta): new_PS_LibreAcces_SavoirFaire_202105180922.txt.diff</a>
+      </li>
+      <li>
+        <a href="https://www.opikanoba.org/data/rpps/files/index_PS_LibreAcces_SavoirFaire_202105180922.txt.csv">fichier d'index des différences: index_PS_LibreAcces_SavoirFaire_202105180922.txt.csv</a>
+      </li>
+    </ul>
+    <h3>Statistiques</h3>
+    <h2>Informations fichier des savoir-faire</h2>
+    <ul>
+      <li>Nombre de lignes : 377554</li>
+      <li>Nombre de lignes modifiées : 0</li>
+      <li>Nombre de profession : 3</li>
     </ul>
   </div>
 </div>
         </article>
       </div>
     </content>
-    <updated>2018-08-14T09:42:58.748219+00:00</updated>
-    <summary>Informations sur la publication RPPS du 2018-08-14</summary>
+    <updated>2021-05-19T09:22:49.041321+00:00</updated>
+    <summary>Informations sur la publication du 2021-05-18</summary>
   </entry>
 </feed>
