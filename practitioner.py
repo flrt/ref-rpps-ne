@@ -18,12 +18,15 @@ import tempfile
 import zipfile
 from collections import OrderedDict
 from datetime import datetime as dt
+import codecs
 
 import pandas
 import requests
 
-from easy_atom import helpers
-
+try:
+    from easy_atom import helpers
+except ImportError:
+    print(f"Erreur import - Atom")
 
 class RPPS:
     """
@@ -339,7 +342,7 @@ class RPPS:
         self.logger.info(f"Save diff zip files : data={data_filename}, diff={diff_filename}")
 
         if data_filename:
-            with open(data_filename, "w") as fdata:
+            with codecs.open(data_filename, "w", "utf-8") as fdata:
                 for _hash, num, data in difflist:
                     fdata.write(f"{data}\n")
 

@@ -3,9 +3,11 @@ import logging
 import os.path
 from datetime import datetime as dt
 
-from easy_atom import atom
-from easy_atom import content
-
+try:
+    from easy_atom import atom
+    from easy_atom import content
+except ImportError:
+    print(f"Erreur import - Atom")
 
 class Info:
     def __init__(self, properties):

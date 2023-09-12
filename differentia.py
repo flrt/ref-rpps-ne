@@ -14,8 +14,11 @@ import logging
 import os.path
 
 import digester
-from easy_atom import helpers
 
+try:
+    from easy_atom import helpers
+except ImportError:
+    print(f"Erreur import - Atom")
 
 class Diff:
     def __init__(self, data_filename=None, storage_dir=""):

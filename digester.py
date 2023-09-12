@@ -14,9 +14,12 @@ import argparse
 import hashlib
 import logging
 import os.path
+import codecs
 
-from easy_atom import helpers
-
+try:
+    from easy_atom import helpers
+except ImportError:
+    print(f"Erreur import - Atom")
 
 class Digester:
     """
@@ -70,7 +73,7 @@ class Digester:
         with open(self.sha_filename(filename), "w") as fout:
             line_number = 0
             try:
-                with open(filename, "r") as fin:
+                with codecs.open(filename, "r", "utf-8") as fin:
                     for line in fin.readlines():
                         digest = hashlib.sha256(line.encode("utf8")).hexdigest()
                         data_sha[digest] = line_number
@@ -106,7 +109,7 @@ class Digester:
         del self.data[:]
 
         try:
-            with open(filename, "r") as fin:
+            with codecs.open(filename, "r", "utf-8") as fin:
                 for line in fin.readlines():
                     self.data.append(line.strip())
         except OSError as oserr:
